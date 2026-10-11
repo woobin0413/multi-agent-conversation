@@ -62,7 +62,8 @@ An interactive web app where two AI agents hold a live 15-turn conversation. Use
 
 ```bash
 # From repo root
-npm run install:all
+npm ci                  # install root tooling, including concurrently
+npm run install:all     # install backend and frontend dependencies
 ```
 
 Copy `backend/.env.example` to `backend/.env` and replace the placeholder locally.
