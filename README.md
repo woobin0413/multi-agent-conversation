@@ -1,21 +1,36 @@
 # Multi-agent Conversation
 
-An interactive dialogue between two AI characters, with live streaming, mood controls and story redirects.
+**Two characters. Fifteen turns. You can change the story.**
 
-This repository is a curated showcase with a fresh Git history. Setup uses local environment files and synthetic fixtures.
+A playful dialogue app where Luna and Oak take turns speaking. Set their moods, pause the conversation, or send the story in a new direction while it unfolds.
 
+[See it in action](#see-it-in-action) · [Engineering highlights](#engineering-highlights) · [Run locally](#getting-started) · [Security](SECURITY.md)
 
-An interactive web app where two AI agents hold a live 15-turn conversation. Users can set each agent's mood, pause and resume the dialogue, and redirect the conversation in real time.
+## See it in action
 
-## Screenshots
+![Conversation interface showing moods, streamed dialogue, pause/resume and a queued story redirect](docs/images/conversation-controls.png)
 
-**Main screen** — choose each agent's mood before starting
+**Choose moods → begin → watch the dialogue → pause or redirect → resume.**
+This capture uses scripted sample dialogue in the real interface. Running the app with your own backend Groq key generates the conversation through the configured model.
 
-![Main Screen](docs/images/MainScreen.png)
+<details>
+<summary><strong>Choose each character’s personality before starting</strong></summary>
 
-**Conversation in progress** — live chat bubbles with pause, resume, and story redirect
+![Initial mood controls for Luna and Oak before beginning a conversation](docs/images/mood-controls.png)
 
-![Conversation](docs/images/Conversation.png)
+Each character has an independent mood. You can also change it during the conversation.
+
+</details>
+
+## Engineering highlights
+
+| Challenge | Approach | Explore |
+| --- | --- | --- |
+| Stream dialogue as it arrives | An async generator, Server-Sent Events and a React EventSource hook | [Story service](backend/src/story/story.service.ts) · [Frontend hook](frontend/src/hooks/useStory.ts) |
+| Keep one browser’s controls private | Owner cookies protect each session and its stream/control routes | [Controller](backend/src/story/story.controller.ts) · [HTTP tests](backend/src/http-security.spec.ts) |
+| Stop abandoned or excessive generation | Abort signals, deadlines, input limits and bounded process-local budgets | [Security tests](backend/src/story/story.security.spec.ts) |
+
+This is a local demo with in-memory sessions. Multi-user hosting needs additional authentication and shared spending controls; see [security and deployment scope](#security-and-deployment-scope).
 
 ## Features
 
