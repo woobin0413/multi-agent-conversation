@@ -1,8 +1,14 @@
 # Multi-agent Conversation
 
-**Two characters. Fifteen turns. You can change the story.**
+**Two AI agents talking to each other—with you choosing the mood.**
 
-A playful dialogue app where Luna and Oak take turns speaking. Set their moods, pause the conversation, or send the story in a new direction while it unfolds.
+Luna and Oak take turns having a conversation. You can make one angry and the other kind, then watch a grumpy comment meet a friendly response. Try funny, mysterious or dramatic moods, change them during the exchange, or add a twist such as “A dragon appears.”
+
+## How the agents work
+
+Each agent plays a different character, with its own role and mood instructions. On each turn, it reads the conversation so far and generates a reply to the other character. Both use the same language model; their separate instructions make them behave differently.
+
+The app coordinates their turns for a 15-turn exchange. You can watch, pause, resume or redirect it without writing every line yourself. With a configured Groq key, replies are generated live; the README screenshots use scripted sample dialogue.
 
 [See it in action](#see-it-in-action) · [Engineering highlights](#engineering-highlights) · [Run locally](#getting-started) · [Security](SECURITY.md)
 
@@ -18,7 +24,7 @@ This capture uses scripted sample dialogue in the real interface. Running the ap
 
 ![Initial mood controls for Luna and Oak before beginning a conversation](docs/images/mood-controls.png)
 
-Each character has an independent mood. You can also change it during the conversation.
+Each character has an independent mood. For example, set Luna to **Angry** and Oak to **Friendly** for an irritated character talking to a kind one. You can change either mood during the conversation.
 
 </details>
 
